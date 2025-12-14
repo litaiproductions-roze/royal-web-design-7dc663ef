@@ -65,6 +65,133 @@ export type Database = {
         }
         Relationships: []
       }
+      story_comments: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          story_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          story_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          story_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "story_comments_story_id_fkey"
+            columns: ["story_id"]
+            isOneToOne: false
+            referencedRelation: "success_stories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      story_likes: {
+        Row: {
+          created_at: string
+          id: string
+          story_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          story_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          story_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "story_likes_story_id_fkey"
+            columns: ["story_id"]
+            isOneToOne: false
+            referencedRelation: "success_stories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      success_stories: {
+        Row: {
+          comments_count: number | null
+          content: string
+          created_at: string
+          id: string
+          image_url: string | null
+          likes_count: number | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          comments_count?: number | null
+          content: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          likes_count?: number | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          comments_count?: number | null
+          content?: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          likes_count?: number | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
